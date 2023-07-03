@@ -1,15 +1,18 @@
 const server = require("http").createServer();
-const io = require("socket.io")(server);
+const io = require("socket.io")(server, {
+  cors: {
+    origin: "*",
+    methods: ["GET", "POST"],
+  },
+});
 io.on("connection", (client) => {
   client.on("chat", (data) => {
-    console.log(data);
+    io.emit("chat", "response : " + data);
+    console.log("data : " + data);
   });
   client.on("disconnect", () => {
     /* … */
   });
 });
 
-setInterval(() => {
-  io.emit("chat", "hello");
-}, 1000);
 server.listen(5000);
