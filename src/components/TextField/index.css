@@ -1,0 +1,11 @@
+.text-field {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background-color: white;
+}
+
+.text-field > svg {
+  width: 16px;
+  height: 16px;
+}
